@@ -85,8 +85,6 @@ public class ProductController {
 		
 		item.setPhoto(photos);
 		
-		item.setRegId(member.getId());
-		
 		service.add(item);
 		
 		return "redirect:list";
@@ -126,9 +124,6 @@ public class ProductController {
 		}
 		
 		item.setPhoto(photos);
-		
-		item.setId(id);
-		item.setUpdateId(member.getId());
 		
 		service.update(item);
 

@@ -71,10 +71,10 @@ public class ProductServiceImpl implements ProductService {
 			Product item = new Product();
 			
 			item.setName("제품명 " + i);
-			item.setGrade("사이즈 " + i);
+			item.setNameEng("ProductName " + i);
+			item.setBrand("브랜드 " + i);
 			item.setPrice(1000 * i);
 			
-			item.setRegId(id);
 			
 			dao.add(item);
 		}

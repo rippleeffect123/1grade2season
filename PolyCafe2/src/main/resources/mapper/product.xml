@@ -51,7 +51,7 @@
 	
 	<insert id="add">
 		INSERT INTO product
-		(id, reg_id, name, price, grade,info, reg_date)
+		(id,name,name_eng, price, brand,info, reg_date)
 		VALUES 
 		(PRODUCT_SEQ.nextval, #{regId}, #{name}, #{price}, #{grade}, #{info}, SYSDATE)
 		

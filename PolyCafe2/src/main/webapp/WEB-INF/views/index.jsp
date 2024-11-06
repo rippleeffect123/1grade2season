@@ -9,34 +9,112 @@
 <jsp:include page="head.jsp"></jsp:include>
 </head>
 <body>
-	<div class="container">
-		<div>
-			<h3>PolyCafe</h3>
-		</div>
+		<jsp:include page="header.jsp"></jsp:include>
 		
-		<nav>
-			<jsp:include page="nav.jsp"></jsp:include>
-		</nav>
-		
-		
-		<div>
-			<ul>
-				<li><a href="member/list">회원관리</a></li>
-				<li><a href="product/list">제품관리</a></li>
-			</ul>
-		</div>
-		
-		<div>
-			<ul>
-				<c:if test="${products == null || products.size() < 1}">
-				<li>등록 된 상품이 없습니다.</li>
-				</c:if>
-				
-				<c:forEach var="item" items="${products}">
-				<li><a href="product/item/${item.id}">${item.name}</a></li>
-				</c:forEach>
-			</ul>
-		</div>
-	</div>
+		 <div class="main-img"><img src="resources/images/main-img.png"></div>
+        <div class="liquor">
+            <div class="main-cimg"><img src="resources/images/cimg.png">
+                <a href="wine" style="font-family: 'Noto Sans', sans-serif;">더보기 +</a>
+            </div>
+            <div class="wine-content">
+                <div class="category-img"><img src="resources/images/Rectangle 6.png"></div>
+                <ul class="items">
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                    <li>7</li>
+                    <li>8</li>
+                    <li>9</li>
+                    <li>10</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="liquor">
+            <div class="main-cimg"><img src="resources/images/cimg2.png">
+                <a href="whiskey" style="font-family: 'Noto Sans', sans-serif;">더보기 +</a>
+            </div>
+            <div class="wine-content">
+                <div class="category-img"><img src="resources/images/whiskey.png"></div>
+                <ul class="items">
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                    <li>7</li>
+                    <li>8</li>
+                    <li>9</li>
+                    <li>10</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="liquor">
+            <div class="main-cimg"><img src="resources/images/cimg3.png">
+                <a href="brandy" style="font-family: 'Noto Sans', sans-serif;">더보기 +</a>
+            </div>
+            <div class="wine-content">
+                <div class="category-img"><img src="resources/images/brandy.png"></div>
+                <ul class="items">
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                    <li>7</li>
+                    <li>8</li>
+                    <li>9</li>
+                    <li>10</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="liquor">
+            <div class="main-cimg"><img src="resources/images/cimg4.png">
+                <a href="vodka" style="font-family: 'Noto Sans', sans-serif;">더보기 +</a>
+            </div>
+            <div class="wine-content">
+                <div class="category-img"><img src="resources/images/vodka.png"></div>
+                <ul class="items">
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                    <li>7</li>
+                    <li>8</li>
+                    <li>9</li>
+                    <li>10</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="liquor">
+            <div class="main-cimg"><img src="resources/images/cimg5.png">
+                <a href="gin" style="font-family: 'Noto Sans', sans-serif;">더보기 +</a>
+            </div>
+            <div class="wine-content">
+                <div class="category-img"><img src="resources/images/gin.png"></div>
+                <ul class="items">
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                    <li>7</li>
+                    <li>8</li>
+                    <li>9</li>
+                    <li>10</li>
+                </ul>
+            </div>
+        </div>
 </body>
 </html>

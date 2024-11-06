@@ -1,0 +1,67 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid 1px #CFCFCF;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+    background-color: white;
+}
+
+.logo-main {
+    width: 100px;
+
+}
+
+.logo-main img {
+    width: 100%;
+}
+
+.nav-bar {
+    display: flex;
+    list-style: none;
+    flex: 3;
+}
+
+.nav-bar a {
+    text-decoration: none;
+    color: inherit;
+    padding: 20px;
+    font-size: 23px;
+    margin-right: 40px;
+    text-align: center;
+}
+
+.btn-all {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar {
+    position: relative;
+}
+
+.search-icon img {
+    width: 10%;
+    position: absolute;
+    top: 25%;
+    right: 5%;
+}
+
+.search-bar input {
+    width: 300px;
+    height: 45px;
+    border-radius: 25px;
+    border: solid 1px #C0C0C0;
+}
+
+.btn-all div {
+    margin-right: 30px;
+}
+
+.signupbtn a {
+    text-decoration: none;
+    color: inherit;
+}

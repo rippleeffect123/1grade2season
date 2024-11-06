@@ -1,62 +1,22 @@
 package kr.ac.kopo.polycafe.model;
 
-import java.util.Date;
+
 import java.util.List;
 
 public class Product {
 	private Long id;
 	private String name;
+	private String nameEng;
 	private int price;
-	private String grade;
-	private String regId;
-	private Date regDate;
-	private String updateId;
-	private String info;
+	private String brand;
+	private int vol;
+	private int abv;
+	private Long info;
 	
-	public String getInfo() {
-		return info;
-	}
-
-	public void setInfo(String info) {
-		this.info = info;
-	}
-
-	public String getRegId() {
-		return regId;
-	}
-
-	public void setRegId(String regId) {
-		this.regId = regId;
-	}
-
-	public Date getRegDate() {
-		return regDate;
-	}
-
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
-	}
-
-	public String getUpdateId() {
-		return updateId;
-	}
-
-	public void setUpdateId(String updateId) {
-		this.updateId = updateId;
-	}
-
-	public Date getUpdateDate() {
-		return updateDate;
-	}
-
-	public void setUpdateDate(Date updateDate) {
-		this.updateDate = updateDate;
-	}
-
-	private Date updateDate;
 	
-	private List<Photo> photo;
+	
 
+	
 	public Long getId() {
 		return id;
 	}
@@ -73,6 +33,14 @@ public class Product {
 		this.name = name;
 	}
 
+	public String getNameEng() {
+		return nameEng;
+	}
+
+	public void setNameEng(String nameEng) {
+		this.nameEng = nameEng;
+	}
+
 	public int getPrice() {
 		return price;
 	}
@@ -81,13 +49,39 @@ public class Product {
 		this.price = price;
 	}
 
-	public String getGrade() {
-		return grade;
+	public String getBrand() {
+		return brand;
 	}
 
-	public void setGrade(String grade) {
-		this.grade = grade;
+	public void setBrand(String brand) {
+		this.brand = brand;
 	}
+
+	public int getVol() {
+		return vol;
+	}
+
+	public void setVol(int vol) {
+		this.vol = vol;
+	}
+
+	public int getAbv() {
+		return abv;
+	}
+
+	public void setAbv(int abv) {
+		this.abv = abv;
+	}
+
+	public Long getInfo() {
+		return info;
+	}
+
+	public void setInfo(Long info) {
+		this.info = info;
+	}
+
+	private List<Photo> photo;
 
 	public List<Photo> getPhoto() {
 		return photo;

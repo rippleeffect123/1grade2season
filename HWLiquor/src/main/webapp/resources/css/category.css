@@ -1,0 +1,123 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.c-title {
+    text-align: center;
+}
+
+.category {
+    text-align: center;
+}
+
+
+.Clist {
+    display: grid;
+    width: 70%;
+    grid-template-columns: repeat(7, 1fr);
+    margin-bottom: 3%;
+    grid-column-gap: 0%;
+}
+
+.Clist .cbtn {
+    width: 200px;
+    height: 40px;
+
+}
+
+.Clist a {
+    text-decoration: none;
+    color: #969696;
+    font-weight: 600;
+    font-size: 17px;
+
+}
+
+.cbtn:hover {
+    background-color: #F3F3F3;
+    width: 100%;
+}
+
+.cbtn {
+    border: solid 1px #B6B6B6;
+    width: 100%;
+    background: none;
+}
+
+.selected {
+    background-color: #189FDB;
+
+}
+
+.selected a {
+    text-decoration: none;
+    color: white;
+}
+
+.top-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.top-img img {
+    width: 73.5%;
+    margin-bottom: 3%;
+}
+
+.item-box {
+    width: 77%;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(15%, auto));
+    place-items: center;
+    gap: 30px;
+    margin-bottom: 3%;
+}
+
+.items {
+    border: 1px solid;
+    width: 200px;
+    height: 400px;
+}
+
+.page {
+
+    outline: 1px solid red;
+}
+
+.p_btn {
+    padding: 5px;
+    margin: 3px;
+    background: none;
+    border: none;
+    width: 40px;
+    height: 40px;
+}
+
+.p_btn:hover:not(.p_select) {
+    background-color: #F3F3F3;
+    border-radius: 50%;
+}
+
+.p_btn a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+.p_select {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: black;
+    color: white;
+}
+
+.p_select a {
+    color: white;
+}

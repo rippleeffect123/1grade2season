@@ -1,0 +1,196 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+body,
+table,
+th,
+td,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+fieldset,
+textarea,
+blockquote,
+span,
+* {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+}
+
+
+.logo {
+    display: flex;
+    justify-content: center;
+    width: 100%
+}
+
+.logo img {
+    width: 10%;
+    margin-top: -2%;
+}
+
+.main-form {
+    border: solid 1px #C5C5C5;
+    border-radius: 5px;
+    width: 50%;
+    height: 100%;
+}
+
+.main-form input,
+select {
+    border: solid 1px #C5C5C5;
+    border-radius: 5px;
+    padding-left: 15px;
+}
+
+
+.title {
+    justify-self: center;
+
+}
+
+.input-id {
+    align-items: center;
+    width: 70%;
+    margin: 0 auto;
+
+}
+
+.input-id input {
+    width: 70%;
+    height: 40px;
+}
+
+.input-id button {
+    width: 20%;
+    height: 40px;
+    background-color: #525FE1;
+    color: white;
+    border: solid 1px #B9B9B9;
+    border-radius: 5px;
+}
+
+.id1 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-name {
+    align-items: center;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.input-name input {
+    width: 97%;
+    height: 40px;
+}
+
+.input-passwd {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.input-passwd input {
+    width: 97%;
+    height: 40px;
+}
+
+.input-email {
+    margin: 0 auto;
+    width: 70%;
+}
+
+.email2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+}
+
+
+
+.email2 input {
+    width: 45%;
+    height: 40px;
+}
+
+.email2 select {
+    width: 45%;
+    height: 40px;
+}
+
+.birth {
+    margin: 0 auto;
+    width: 70%;
+}
+
+.birth-sel {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+}
+
+.birth-sel select {
+    width: 30%;
+    height: 40px;
+}
+
+.phone1 {
+    width: 70%;
+    margin: 0 auto;
+    padding-bottom: 5%;
+}
+
+.phone1 input {
+    width: 97%;
+    height: 40px;
+}
+
+.signup-btn {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-bottom: 2%;
+}
+
+.signup-btn button {
+    width: 30%;
+    height: 50px;
+    background-color: #525FE1;
+    color: #ffffff;
+    border: solid 1px #B9B9B9;
+    border-radius: 5px;
+}
+
+.go-login {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.go-login a {
+    text-decoration: none;
+    color: #2C8EFF;
+}

@@ -26,7 +26,7 @@
 					<select name="search" class="form-select form-select-sm">
 						<option value="1">제품번호</option>
 						<option value="2">제품명</option>
-						<option value="3">등급</option>
+						<option value="3">브랜드</option>
 					</select>
 				</div>
 				<div class="col-3">
@@ -44,20 +44,18 @@
 					<tr>
 						<th>제품번호</th>
 						<th>제품명</th>
+						<th>제품영명</th>
 						<th>가격</th>
-						<th>등급</th>
-						<th>등록자</th>
-						<th>등록일시</th>
-						<th>변경자</th>
-						<th>변경일시</th>
-						<th>관리</th>
+						<th>브랜드</th>
+						<th>용량</th>
+						<th>도수</th>
 					</tr>
 				</thead>
 
 				<tbody>
 					<c:if test="${list.size() < 1}">
 						<tr>
-							<td colspan="9">검색 된 제품이 없습니다</td>
+							<td colspan="7">검색 된 제품이 없습니다</td>
 						</tr>
 					</c:if>
 
@@ -65,14 +63,11 @@
 						<tr>
 							<td>${item.id}</td>
 							<td><a href="view/${item.id}">${item.name}</a></td>
+							<td>${item.nameEng}</td>
 							<td>${item.price}</td>
-							<td>${item.grade}</td>
-							<td>${item.regId}</td>
-							<td><fmt:formatDate value="${item.regDate}"
-									pattern="yyyy년 MM월 dd일" /></td>
-							<td>${item.updateId}</td>
-							<td><fmt:formatDate value="${item.updateDate}"
-									pattern="yyyy년 MM월 dd일" /></td>
+							<td>${item.brand}</td>												
+							<td>${item.vol}</td>												
+							<td>${item.abv}</td>												
 							<td><a href="update/${item.id}" class="btn btn-sm btn-info">변경</a> <a
 								href="delete/${item.id}" class="btn btn-sm btn-danger">삭제</a></td>
 						</tr>
