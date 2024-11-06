@@ -60,8 +60,13 @@
                 
                 <c:if test="${sessionScope.member != null}">
                 <div class="state-login">
+                <c:if test="${sessionScope.member.role == 99}">
+                	<a href="admin">EDIT</a>
+                </c:if>
+                <c:if test="${sessionScope.member.role != 99}">
+                	<a href="mypage">MYPAGE</a>
+                </c:if>
                     <a href="logout">LOGOUT</a>
-                    <a href="mypage">MYPAGE</a>
                 </div>
                 </c:if>
             </div>

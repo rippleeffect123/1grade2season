@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.ac.kopo.HWLiquor.dao.ProductDao;
 import kr.ac.kopo.HWLiquor.model.Product;
+import kr.ac.kopo.HWLiquor.pager.Pager;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -15,8 +16,12 @@ public class ProductServiceImpl implements ProductService {
 	ProductDao dao;
 
 	@Override
-	public List<Product> list() {
-		return dao.list();
+	public List<Product> list(Pager pager) {
+		int total = dao.total(pager);
+		
+		pager.setTotal(total);
+		
+		return dao.list(pager);
 	}
 
 }

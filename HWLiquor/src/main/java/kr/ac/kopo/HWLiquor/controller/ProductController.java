@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.ac.kopo.HWLiquor.model.Product;
+import kr.ac.kopo.HWLiquor.pager.Pager;
 import kr.ac.kopo.HWLiquor.service.ProductService;
 
 @Controller
@@ -20,8 +21,8 @@ public class ProductController {
 	ProductService service;
 	
 	@GetMapping("/list")
-	String list(Model model) {
-		List<Product> list = service.list();
+	String list(Model model, Pager pager) {
+		List<Product> list = service.list(pager);
 		
 		model.addAttribute("list",list);
 		

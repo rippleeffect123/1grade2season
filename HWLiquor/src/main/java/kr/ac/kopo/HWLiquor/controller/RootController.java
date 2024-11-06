@@ -36,5 +36,9 @@ public class RootController {
 		return "redirect:.";
 	}
 	
+	@GetMapping("/admin")
+	String admin() {
+		return "admin";
+	}
 
 }
