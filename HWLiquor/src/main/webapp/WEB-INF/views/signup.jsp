@@ -5,12 +5,14 @@
 <meta charset="UTF-8">
 <title>HWLiquor/회원가입</title>
 <script>
-	let id_check = false;
+	let id_check = true;
 </script>
 <link rel="stylesheet" href="resources/css/signup.css">
     <script src="resources/script/email.js"></script>
     <script src="resources/script/moment-with-locales.js"></script>
     <script src="resources/script/jquery-3.7.1.min.js"></script>
+    <script src="resources/script/signup.js"></script>
+    <script src="resources/script/sign.js"></script>
 </head>
 <body>
 <div class="container">
@@ -52,7 +54,7 @@
                 <div class="input-email">
                     <p>E-mail</p>
                     <div class="email2">
-                        <input type="email" name="mail" placeholder="이메일 주소">
+                        <input type="text" name="mail" placeholder="이메일 주소">
                         <span id="att">@</span>
                         <select name="address" id="address" style="color: #ADADAD;">
                             <optgroup>
@@ -69,9 +71,9 @@
                     <p>생년월일</p>
                     <div class="birth-sel">
                         <script src="resources/script/birth.js"></script>
-                        <select name="yy" id="year"></select>
-                        <select name="mm" id="month"></select>
-                        <select name="dd" id="day"></select>
+                        <select name="year" id="year"></select>
+                        <select name="month" id="month"></select>
+                        <select name="day" id="day"></select>
                     </div>
                 </div>
 

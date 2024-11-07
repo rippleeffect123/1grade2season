@@ -41,11 +41,30 @@
                         <img src="resources/images/search_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="검색하기">
                     </div>
                 </div>
+                   <c:if test="${sessionScope.member == null}">
+                <div class="mypage">
+                    <a href="login">
+                        <img src="resources/images/person_39dp_000000_FILL0_wght400_GRAD0_opsz40.svg" alt="마이페이지">
+                    </a>
+                </div>
+                </c:if>
+               
+                <c:if test="${sessionScope.member.role == 1}">
                 <div class="mypage">
                     <a href="mypage">
                         <img src="resources/images/person_39dp_000000_FILL0_wght400_GRAD0_opsz40.svg" alt="마이페이지">
                     </a>
                 </div>
+                </c:if>
+                
+                   <c:if test="${sessionScope.member.role == 99}">
+                <div class="mypage">
+                    <a href="admin">
+                        <img src="resources/images/person_39dp_000000_FILL0_wght400_GRAD0_opsz40.svg" alt="마이페이지">
+                    </a>
+                </div>
+                </c:if>
+                
                 <div class="cart">
                     <a href="cart">
                         <img src="resources/images/shopping_cart_37dp_000000_FILL0_wght400_GRAD0_opsz40.svg" alt="장바구니">
@@ -60,12 +79,6 @@
                 
                 <c:if test="${sessionScope.member != null}">
                 <div class="state-login">
-                <c:if test="${sessionScope.member.role == 99}">
-                	<a href="admin">EDIT</a>
-                </c:if>
-                <c:if test="${sessionScope.member.role != 99}">
-                	<a href="mypage">MYPAGE</a>
-                </c:if>
                     <a href="logout">LOGOUT</a>
                 </div>
                 </c:if>

@@ -10,14 +10,7 @@
 	<div>
 		<h3>HWLiquor</h3>
 	</div>
-	
-	<div>
-			<ul>
-				<li><a href="member/list">회원관리</a></li>
-				<li><a href="product/list">제품관리</a></li>
-				<li><a href="orders/list">주문관리</a></li>
-			</ul>
-		</div>
+
 </div>
 
 </body>

@@ -27,6 +27,8 @@
 	
 	<context:component-scan base-package="kr.ac.kopo" />
 	
+	<tx:annotation-driven/>
+	
 	<interceptors>
 		<interceptor>
 		<mapping path="/member/**"/>		

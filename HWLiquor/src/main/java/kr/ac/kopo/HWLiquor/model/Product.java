@@ -1,5 +1,7 @@
 package kr.ac.kopo.HWLiquor.model;
 
+import java.util.List;
+
 public class Product {
 	private Long id;
 	private Long categoryId;
@@ -64,6 +66,15 @@ public class Product {
 	}
 	public void setInfo(String info) {
 		this.info = info;
+	}
+	
+	private List<Photo> photo;
+
+	public List<Photo> getPhoto() {
+		return photo;
+	}
+	public void setPhoto(List<Photo> photo) {
+		this.photo = photo;
 	}
 	
 	

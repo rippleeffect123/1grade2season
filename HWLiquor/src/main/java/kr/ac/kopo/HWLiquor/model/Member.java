@@ -6,6 +6,7 @@ public class Member {
 	private String name;
 	private String phone;
 	private String mail;
+	private String address;
 	private Integer year;
 	private Integer month;
 	private Integer day;
@@ -70,6 +71,18 @@ public class Member {
 	}
 	public void setPoints(Integer points) {
 		this.points = points;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	@Override
+	public String toString() {
+		return "Member [id=" + id + ", passwd=" + passwd + ", name=" + name + ", phone=" + phone + ", mail=" + mail
+				+ ", address=" + address + ", year=" + year + ", month=" + month + ", day=" + day + ", role=" + role
+				+ ", points=" + points + "]";
 	}
 
 	
