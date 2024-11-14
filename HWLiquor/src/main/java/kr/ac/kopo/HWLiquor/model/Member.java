@@ -12,6 +12,7 @@ public class Member {
 	private Integer day;
 	private Integer role;
 	private Integer points;
+	
 	public String getId() {
 		return id;
 	}
@@ -76,7 +77,9 @@ public class Member {
 		return address;
 	}
 	public void setAddress(String address) {
-		this.address = address;
+		if(!"type".equals(address)) {			
+			this.address = address;
+		}
 	}
 	@Override
 	public String toString() {

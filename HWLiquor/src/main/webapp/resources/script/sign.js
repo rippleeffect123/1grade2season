@@ -26,5 +26,15 @@ function signup() {
         return;
     }
 
+    if (!form.mail.value) {
+        alert("이메일을 입력해 주시기 바랍니다")
+    }
+
+
+    document.getElementById("address-list").value = document.getElementById("address-txt").value;
+
+
+    form.submit();
+
 
 }

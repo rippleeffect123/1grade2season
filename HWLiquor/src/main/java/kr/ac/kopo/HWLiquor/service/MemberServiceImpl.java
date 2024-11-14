@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import kr.ac.kopo.HWLiquor.dao.MemberDao;
 import kr.ac.kopo.HWLiquor.model.Member;
+import kr.ac.kopo.HWLiquor.pager.Pager;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -16,8 +17,14 @@ public class MemberServiceImpl implements MemberService {
 	MemberDao dao;
 	
 	@Override
-	public List<Member> list() {
-		return dao.list();
+	public List<Member> list(Pager pager) {
+		int total = dao.total(pager);
+		
+		pager.setTotal(total);
+		
+		return dao.list(pager);
+		
+		
 	}
 	
 	@Override
@@ -48,7 +55,6 @@ public class MemberServiceImpl implements MemberService {
 		item.setPoints(0);
 		
 		dao.add(item);
-		
 	}
 
 	@Override

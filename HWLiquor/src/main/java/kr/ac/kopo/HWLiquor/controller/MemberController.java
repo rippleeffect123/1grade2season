@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.ac.kopo.HWLiquor.model.Member;
+import kr.ac.kopo.HWLiquor.pager.Pager;
 import kr.ac.kopo.HWLiquor.service.MemberService;
 
 @Controller
@@ -23,8 +24,8 @@ public class MemberController {
 	MemberService service;
 	
 	@GetMapping("/list")
-	String list(Model model) {
-		List<Member> list = service.list();
+	String list(Model model, Pager pager) {
+		List<Member> list = service.list(pager);
 		
 		model.addAttribute("list", list);
 		

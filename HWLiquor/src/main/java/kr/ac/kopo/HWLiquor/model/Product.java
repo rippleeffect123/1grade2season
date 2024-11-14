@@ -5,6 +5,9 @@ import java.util.List;
 public class Product {
 	private Long id;
 	private Long categoryId;
+	private Long originId;
+	private String originName;
+
 	private String name;
 	private String nameEng;
 	private int price;
@@ -75,6 +78,18 @@ public class Product {
 	}
 	public void setPhoto(List<Photo> photo) {
 		this.photo = photo;
+	}
+	public Long getOriginId() {
+		return originId;
+	}
+	public void setOriginId(Long originId) {
+		this.originId = originId;
+	}
+	public String getOriginName() {
+		return originName;
+	}
+	public void setOriginName(String originName) {
+		this.originName = originName;
 	}
 	
 	

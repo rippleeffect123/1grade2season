@@ -4,6 +4,11 @@
 <head>
 <meta charset="UTF-8">
 <title>HWLiquor/관리자페이지</title>
+<style type="text/css">
+	ul{
+	list-style: none;
+	}
+</style>
 </head>
 <body>
 <div>

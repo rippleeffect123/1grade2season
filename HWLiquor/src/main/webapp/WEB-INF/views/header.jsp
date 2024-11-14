@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="resources/css/header.css">
-    <link rel="stylesheet" href="resources/css/font.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/font.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
     </style>
@@ -17,69 +17,70 @@
 <body>
 <div class="header">
             <div class="logo-main">
-                <a href="index.html">
-                    <img src="resources/images/HW.png">
+                <a href="${pageContext.request.contextPath}/">
+                    <img src="${pageContext.request.contextPath}/resources/images/HW.png">
                 </a>
             </div>
             <nav>
                 <ul class="nav-bar" style="font-family: 'Noto Sans', sans-serif; font-weight: 570;">
-                    <li><a href="wine">와인</a></li>
-                    <li><a href="whisky">위스키</a></li>
-                    <li><a href="brandy">브랜디/코냑</a></li>
-                    <li><a href="vodka">리큐르/보드카</a></li>
-                    <li><a href="gin">진/럼</a></li>
-                    <li><a href="community">커뮤니티</a></li>
+                    <li><a href="/goods/wine/0">와인</a></li>
+                    <li><a href="/goods/whisky">위스키</a></li>
+                    <li><a href="/goods/brandy">브랜디/코냑</a></li>
+                    <li><a href="/goods/vodka">리큐르/보드카</a></li>
+                    <li><a href="/goods/gin">진/럼</a></li>
+                    <li><a href="/community">커뮤니티</a></li>
                 </ul>
             </nav>
 
             <div class="btn-all">
-                <div class="search-bar">
                     <form>
-                        <input type="search" name="search" id="search">
+                		<div class="search-bar">
+                    		<input type="text" name="keyword" id="keyword">
+                        	<button class="search-icon">
+                        		<img src="${pageContext.request.contextPath}/resources/images/search_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="검색하기">
+                        	</button>
+               		 </div>
                     </form>
-                    <div class="search-icon">
-                        <img src="resources/images/search_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="검색하기">
-                    </div>
-                </div>
+                   
                    <c:if test="${sessionScope.member == null}">
                 <div class="mypage">
-                    <a href="login">
-                        <img src="resources/images/person_39dp_000000_FILL0_wght400_GRAD0_opsz40.svg" alt="마이페이지">
+                    <a href="${pageContext.request.contextPath}/login">
+                        <img src="${pageContext.request.contextPath}/resources/images/person_39dp_000000_FILL0_wght400_GRAD0_opsz40.svg" alt="마이페이지">
                     </a>
                 </div>
                 </c:if>
                
                 <c:if test="${sessionScope.member.role == 1}">
                 <div class="mypage">
-                    <a href="mypage">
-                        <img src="resources/images/person_39dp_000000_FILL0_wght400_GRAD0_opsz40.svg" alt="마이페이지">
+                    <a href="${pageContext.request.contextPath}/mypage">
+                        <img src="${pageContext.request.contextPath}/resources/images/person_39dp_000000_FILL0_wght400_GRAD0_opsz40.svg" alt="마이페이지">
                     </a>
                 </div>
                 </c:if>
                 
                    <c:if test="${sessionScope.member.role == 99}">
                 <div class="mypage">
-                    <a href="admin">
-                        <img src="resources/images/person_39dp_000000_FILL0_wght400_GRAD0_opsz40.svg" alt="마이페이지">
+                    <a href="${pageContext.request.contextPath}/admin">
+                        <img src="${pageContext.request.contextPath}/resources/images/person_39dp_000000_FILL0_wght400_GRAD0_opsz40.svg" alt="마이페이지">
                     </a>
                 </div>
                 </c:if>
                 
                 <div class="cart">
-                    <a href="cart">
-                        <img src="resources/images/shopping_cart_37dp_000000_FILL0_wght400_GRAD0_opsz40.svg" alt="장바구니">
+                    <a href="${pageContext.request.contextPath}/cart">
+                        <img src="${pageContext.request.contextPath}/resources/images/shopping_cart_37dp_000000_FILL0_wght400_GRAD0_opsz40.svg" alt="장바구니">
                     </a>
                 </div>
                 
                 <c:if test="${sessionScope.member == null}">
                 <div class="signupbtn">
-                    <a href="signup">JOIN</a>
+                    <a href="${pageContext.request.contextPath}/signup">JOIN</a>
                 </div>
                 </c:if>
                 
                 <c:if test="${sessionScope.member != null}">
                 <div class="state-login">
-                    <a href="logout">LOGOUT</a>
+                    <a href="${pageContext.request.contextPath}/logout">LOGOUT</a>
                 </div>
                 </c:if>
             </div>

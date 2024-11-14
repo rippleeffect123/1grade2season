@@ -87,6 +87,7 @@ select {
     color: white;
     border: solid 1px #B9B9B9;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .id1 {
@@ -131,8 +132,9 @@ select {
 
 
 .email2 input {
-    width: 45%;
+    width: 38%;
     height: 40px;
+    margin-right: 5px;
 }
 
 .email2 select {
@@ -182,6 +184,7 @@ select {
     color: #ffffff;
     border: solid 1px #B9B9B9;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .go-login {
@@ -193,4 +196,8 @@ select {
 .go-login a {
     text-decoration: none;
     color: #2C8EFF;
+}
+
+.box {
+    margin-left: 5px;
 }

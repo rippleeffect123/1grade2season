@@ -1,0 +1,104 @@
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 100px auto;
+    align-items: center;
+
+}
+
+.board_title {
+    margin-bottom: 30px;
+}
+
+.btn_wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    gap: 10px;
+    align-items: center;
+
+}
+
+.btn-a {
+    border: 1px solid;
+    width: 80px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    background-color: black;
+    color: white;
+}
+
+.danger {
+    border: 1px solid;
+    width: 80px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    background-color: red;
+    color: white;
+}
+
+.btn-a,
+.danger a {
+    margin: 0 auto;
+}
+
+
+.t1 {
+    width: 80%;
+    text-align: center;
+    border-collapse: collapse;
+    border-left: none;
+    border-right: none;
+}
+
+.t1 thead {
+    border-top: 2px solid;
+    border-bottom: 1px solid #9C9C9C;
+}
+
+.t1 tbody {
+    height: 40px;
+}
+
+.btn-b {
+    display: flex;
+    justify-items: center;
+    border: none;
+    align-items: center;
+    justify-content: center;
+    line-height: 40px;
+    gap: 5px;
+}
+
+.btn-b a {
+    text-align: center;
+}
+
+.alt,
+.del {
+    margin-top: 10px;
+    border: 1px solid black;
+    height: 23px;
+    width: 64px;
+    line-height: 20px;
+    border-radius: 3px;
+}
+
+.alt {
+    background-color: #189FDB;
+    color: white;
+}
+
+.del {
+    background-color: red;
+    color: white;
+}

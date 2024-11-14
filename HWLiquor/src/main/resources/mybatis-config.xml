@@ -10,6 +10,7 @@
 		<typeAlias type="kr.ac.kopo.HWLiquor.model.Product" alias="Product"/>
 		<typeAlias type="kr.ac.kopo.HWLiquor.model.Member" alias="Member"/>
 		<typeAlias type="kr.ac.kopo.HWLiquor.model.Photo" alias="Photo"/>
+		<typeAlias type="kr.ac.kopo.HWLiquor.model.Category" alias="Category"/>
 	</typeAliases>
 	
 	<mappers>

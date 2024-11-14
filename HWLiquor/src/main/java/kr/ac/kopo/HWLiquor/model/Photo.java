@@ -29,6 +29,10 @@ public class Photo {
 	public void setUuid(String uuid) {
 		this.uuid = uuid;
 	}
+	@Override
+	public String toString() {
+		return "Photo [id=" + id + ", productId=" + productId + ", filename=" + filename + ", uuid=" + uuid + "]";
+	}
 	
 	
 }

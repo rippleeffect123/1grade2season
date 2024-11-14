@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.ac.kopo.HWLiquor.model.Member;
+import kr.ac.kopo.HWLiquor.pager.Pager;
 
 @Repository
 public class MemberDaoImpl implements MemberDao {
@@ -16,8 +17,8 @@ public class MemberDaoImpl implements MemberDao {
 	SqlSession sql;
 	
 	@Override
-	public List<Member> list() {
-		return sql.selectList("member.list");
+	public List<Member> list(Pager pager) {
+		return sql.selectList("member.list", pager);
 	}
 
 	@Override
@@ -41,6 +42,11 @@ public class MemberDaoImpl implements MemberDao {
 	public void delete(String id) {
 		sql.delete("member.delete", id);
 		
+	}
+
+	@Override
+	public int total(Pager pager) {
+		return sql.selectOne("member.total", pager);
 	}
 
 }

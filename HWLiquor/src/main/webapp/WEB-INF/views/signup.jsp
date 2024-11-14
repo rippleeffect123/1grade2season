@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <title>HWLiquor/회원가입</title>
 <script>
-	let id_check = true;
+	let id_check = false;
 </script>
 <link rel="stylesheet" href="resources/css/signup.css">
     <script src="resources/script/email.js"></script>
@@ -56,14 +56,14 @@
                     <div class="email2">
                         <input type="text" name="mail" placeholder="이메일 주소">
                         <span id="att">@</span>
-                        <select name="address" id="address" style="color: #ADADAD;">
-                            <optgroup>
-                                <option id="addressNull" value="null">이메일을 입력해주세요</option>
-                                <option value="naver.com">naver.com</option>
-                                <option value="hanmail.com">hanmail.com</option>
-                                <option value="gmail.com">gmail.com</option>
-                                <option value="nate.com">nate.com</option>
-                            </optgroup>
+                       <input class="box" id="address-txt" type="text" name="address"/>
+                        <select class="box" name="address" id="address-list" style="color: #ADADAD;">
+                            <option id="address-in" value="type">직접 입력</option>
+                            <option value="naver.com">naver.com</option>
+                            <option value="hanmail.com">hanmail.com</option>
+                            <option value="gmail.com">gmail.com</option>
+                            <option value="nate.com">nate.com</option>
+
                         </select>
                     </div>
                 </div>

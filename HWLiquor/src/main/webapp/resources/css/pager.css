@@ -1,0 +1,63 @@
+.page {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+}
+
+.p_btn {
+    padding: 5px;
+    margin: 3px;
+    background: none;
+    border: none;
+    width: 40px;
+    height: 40px;
+}
+
+.p_rev,
+.p_next {
+    padding: 5px;
+    margin: 0;
+    background: none;
+    border: none;
+    width: 25px;
+    height: 25px;
+}
+
+.p_rev img {
+    width: 25px;
+    height: 25px;
+}
+
+.p_next img {
+    width: 25px;
+    height: 25px;
+}
+
+.p_btn img {
+    width: 40px;
+    height: 40px;
+}
+
+.p_btn:hover:not(.p_select) {
+    background-color: #F3F3F3;
+    border-radius: 50%;
+}
+
+.p_btn a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+.p_select {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: black;
+    color: white;
+}
+
+.p_select a {
+    color: white;
+}

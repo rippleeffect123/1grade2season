@@ -10,7 +10,17 @@ public class Pager {
 	private float total;
 	private int perGroup = 5;
 	
-	private int search;
+	private Long originId = 0L;
+	
+
+	public Long getOriginId() {
+		return originId;
+	}
+	public void setOriginId(Long originId) {
+		this.originId = originId;
+	}
+
+	
 	private String keyword;
 	public int getPage() {
 		return page;
@@ -36,12 +46,7 @@ public class Pager {
 	public void setPerGroup(int perGroup) {
 		this.perGroup = perGroup;
 	}
-	public int getSearch() {
-		return search;
-	}
-	public void setSearch(int search) {
-		this.search = search;
-	}
+	
 	public String getKeyword() {
 		return keyword;
 	}
@@ -81,9 +86,9 @@ public class Pager {
 	
 	public String getQuery() {
 		String query = "";
-		
-		if(search > 0)
-			query += "&search=" + search + "&keyword=" + keyword;
+	
+		if(keyword != null)
+			query += "&keyword=" + keyword;
 		
 		return query;
 	}

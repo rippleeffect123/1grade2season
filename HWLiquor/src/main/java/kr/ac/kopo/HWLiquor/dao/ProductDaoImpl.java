@@ -89,4 +89,46 @@ public class ProductDaoImpl implements ProductDao {
 		
 	}
 
+
+
+	@Override
+	public List<Product> wine(Pager pager) {
+		return sql.selectList("product.wine", pager);
+	}
+
+
+
+	@Override
+	public List<Product> whiskey(Pager pager) {
+		return sql.selectList("product.whiskey", pager);
+	}
+
+
+
+	@Override
+	public List<Product> brandy(Pager pager) {
+		return sql.selectList("product.brandy", pager);
+	}
+
+
+
+	@Override
+	public List<Product> liquor(Pager pager) {
+		return sql.selectList("product.liquor", pager);
+	}
+
+
+
+	@Override
+	public List<Product> gin(Pager pager) {
+		return sql.selectList("product.gin", pager);
+	}
+
+
+
+	@Override
+	public List<Product> wineList(Pager pager) {
+		return sql.selectList("product.wine", pager);
+	}
+
 }

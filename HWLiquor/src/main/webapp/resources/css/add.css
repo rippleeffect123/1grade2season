@@ -1,0 +1,64 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    height: 200vh;
+
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.logo h1 {
+    text-align: center;
+    margin: 0;
+}
+
+.logo img {
+    width: 40%;
+}
+
+.main-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid 1px #C5C5C5;
+    border-radius: 5px;
+    width: 40%;
+    height: 75%;
+}
+
+.main-form h3 {
+    text-align: center;
+}
+
+.input-value {
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.input-value input {
+    width: 97%;
+    height: 40px;
+}
+
+.add-btn {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-bottom: 2%;
+}
+
+.add-btn button {
+    width: 40%;
+    height: 40px;
+    background-color: #525FE1;
+    color: #ffffff;
+    border: solid 1px #B9B9B9;
+    border-radius: 5px;
+}

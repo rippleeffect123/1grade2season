@@ -31,7 +31,7 @@
 	
 	<interceptors>
 		<interceptor>
-		<mapping path="/member/**"/>		
+		<mapping path="/member/**"/>	
 		<beans:bean class="kr.ac.kopo.HWLiquor.interceptor.AdminInterceptor"></beans:bean>
 		</interceptor>
 	</interceptors>

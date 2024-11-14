@@ -3,10 +3,11 @@ package kr.ac.kopo.HWLiquor.service;
 import java.util.List;
 
 import kr.ac.kopo.HWLiquor.model.Member;
+import kr.ac.kopo.HWLiquor.pager.Pager;
 
 public interface MemberService {
 
-	List<Member> list();
+	List<Member> list(Pager pager);
 
 	void signup(Member item);
 

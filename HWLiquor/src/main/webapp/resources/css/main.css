@@ -44,14 +44,54 @@
     flex: 11;
     display: grid;
     list-style: none;
-    grid-template-columns: repeat(auto-fill, minmax(15%, auto));
+    grid-template-columns: repeat(auto-fill, minmax(220px, auto));
     gap: 30px;
     grid-auto-rows: 336px;
     align-content: space-between;
     margin: 0;
 }
 
-.items li {
-    border: solid 1px;
 
+.goods-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    gap: 0;
+
+}
+
+.photo-box {
+    display: flex;
+    width: 100%;
+    border: solid 1px;
+    height: 78%;
+    margin: 0 auto;
+
+}
+
+
+
+.photo {
+    width: 100%;
+    object-fit: contain;
+
+}
+
+.info-box {
+    text-align: center;
+    width: 100%;
+    margin: 0px;
+}
+
+.info-box p {
+    margin: 0;
+    font-weight: 600;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }

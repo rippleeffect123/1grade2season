@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import kr.ac.kopo.HWLiquor.model.Category;
 import kr.ac.kopo.HWLiquor.model.Photo;
 import kr.ac.kopo.HWLiquor.model.Product;
 import kr.ac.kopo.HWLiquor.pager.Pager;
@@ -44,7 +45,7 @@ public class ProductController {
 	}
 	
 	@PostMapping("/add")
-	String add(Product item, List<MultipartFile> uploadFile) {
+	String add(Product item, List<MultipartFile> uploadFile ,Category item1) {
 		List<Photo> photos = new ArrayList<Photo>();
 		
 		for(MultipartFile file : uploadFile) {
@@ -68,6 +69,7 @@ public class ProductController {
 			}
 		}
 		item.setPhoto(photos);
+		
 		
 		service.add(item);
 		

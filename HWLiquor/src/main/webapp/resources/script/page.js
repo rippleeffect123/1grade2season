@@ -10,4 +10,8 @@ window.addEventListener("load", () => {
             button.classList.add("p_select");
         });
     });
-})
+
+    if (p_btn.length > 0) {
+        p_btn[0].classList.add("p_select");
+    }
+});

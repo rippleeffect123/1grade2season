@@ -4,13 +4,16 @@
 <mapper namespace="product">
 
 	<sql id="search">
-		SELECT * FROM product
+		SELECT * FROM product JOIN category on (product.category_id = category.id)
+		<if test="keyword != null">
 		<where>
-			name LIKE CONCAT(CONCAT('%', #{keyword}), '%') OR 
-			brand LIKE CONCAT(CONCAT('%', #{keyword}), '%')
+			product.name LIKE CONCAT(CONCAT('%', #{keyword}), '%') OR 
+			brand LIKE CONCAT(CONCAT('%', #{keyword}), '%') OR
+			category.name LIKE CONCAT(CONCAT('%', #{keyword}), '%')
 		</where>
+		</if>
 		
-		ORDER BY id
+		ORDER BY product.id
 	</sql>
 
 	<select id="total" resultType="Integer">
@@ -29,9 +32,9 @@
 	
 	<insert id="add">
 		INSERT INTO product
-		(id, category_id, name, name_eng, price, brand, vol, abv, info)
+		(id, category_id,origin_id,origin_name, name, name_eng, price, brand, vol, abv, info)
 		VALUES
-		(PRODUCT_SEQ.nextval, #{categoryId}, #{name}, #{nameEng}, #{price}, #{brand}, #{vol}, #{abv}, #{info})
+		(PRODUCT_SEQ.nextval, #{categoryId},#{originId},#{originName} ,#{name}, #{nameEng}, #{price}, #{brand}, #{vol}, #{abv}, #{info})
 		
 		<selectKey keyProperty="id" resultType="Long" order="AFTER">
 			SELECT PRODUCT_SEQ.currval FROM dual
@@ -40,7 +43,7 @@
 	
 	
 	
-	<resultMap type="Product" id="ProductMap" autoMapping="true">
+	<resultMap type="Product" id="productMap" autoMapping="true">
 		<id column="id" property="id" />
 		
 		<collection column="product_id" property="photo" ofType="Photo" javaType="ArrayList" autoMapping="true">
@@ -48,7 +51,21 @@
 		</collection>
 	</resultMap>
 	
-	<select id="item" resultMap="productMap">
+	<resultMap type="Category" id="categoryMap" autoMapping="true">
+    <id column="id" property="id" />
+    
+    <!-- Product 컬렉션 매핑 -->
+    <collection column="category" property="product" ofType="Product" javaType="ArrayList" autoMapping="true">
+        <id column="product_id" property="id"/>
+    </collection>
+
+    <!-- Photo 컬렉션 매핑 -->
+    <collection column="product_id" property="photo" ofType="Photo" javaType="ArrayList" autoMapping="true">
+        <id column="photo_id" property="id"/>
+    </collection>
+</resultMap>
+	
+	<select id="item" resultMap="productMap"> 
 		SELECT product.*,
 			photo.id photo_id,
 			photo.filename,
@@ -59,6 +76,18 @@
 		WHERE product.id=#{id}
 	</select>
 	
+	<!-- 카테고리와 나라를 받아오는 쿼리문 -->
+	<select id="item_origin" resultMap="categoryMap">
+		SELECT product.id,
+		product.category_id,product.orgin_id, product.origin_name,product.name,
+		product.name_eng,product.price,
+		product.brand, product.vol, product.abv, product.info, category.id category_id, 
+		category.name category_name,photo.id photo_id, photo.filename, 
+		photo.uuid, photo.product_id
+		FROM product JOIN category ON product.category_id = category.id left join photo on product.id = photo.product_id
+		WHERE category.name = #{name} and product.origin_name = #{orginName} 
+	</select>
+	
 	<select id="item_photo" resultType="Photo">
 		SELECT * FROM photo
 		WHERE id=#{id}
@@ -66,7 +95,7 @@
 	
 	<update id="update">
 		UPDATE product
-		SET name=#{name} name_eng=#{nameEng}, price=#{price}, brand=#{brand}, vol=#{vol}, abv=#{abv}, info=#{info}
+		SET category_id=#{categoryId},origin_id=#{originId},origin_name=#{originName}, name=#{name} name_eng=#{nameEng}, price=#{price}, brand=#{brand}, vol=#{vol}, abv=#{abv}, info=#{info}
 		WHERE id=#{id} 
 	</update>
 	
@@ -78,10 +107,10 @@
 	
 	<insert id="add_photo">
 		INSERT INTO photo
-		VALUES (PHOTO_SEQ.nextval)
+		VALUES (PHOTO_SEQ.nextval, #{productId}, #{filename}, #{uuid})
 	</insert>
 	
-	<select id="get_photo">
+	<select id="get_photo" resultType="Photo">
 		SELECT * FROM photo
 		WHERE product_id=#{id}
 	</select>
@@ -95,4 +124,73 @@
 		DELETE FROM photo
 		WHERE id=#{id}
 	</delete>
+	
+	<select id="wine" resultMap="productMap">
+		SELECT * FROM 
+			(SELECT sub.*, ROWNUM rnum FROM
+			(SELECT * FROM product JOIN category on (product.category_id = category.id) join photo on (product.id = photo.product_id)) sub)
+			
+			<if test="perPage == 0 and originId == 0" >
+			 WHERE category_id = 1
+			</if>
+			<if test="perPage != 0">
+				WHERE rnum BETWEEN ((#{page} - 1) * #{perPage}) + 1 AND (#{page} * #{perPage})
+			</if>
+			<if test="originId != 0">
+				WHERE category_id = 1 and origin_id = #{originId}
+			</if>
+	</select>
+	
+	<select id="whiskey" resultMap="productMap">
+		SELECT * FROM 
+			(SELECT sub.*, ROWNUM rnum FROM
+			(SELECT * FROM product JOIN category on (product.category_id = category.id) join photo on (product.id = photo.product_id)) sub)
+			
+			<if test="perPage == 0">
+			 WHERE category_id = 2
+			</if>
+			<if test="perPage != 0">
+				WHERE rnum BETWEEN ((#{page} - 1) * #{perPage}) + 1 AND (#{page} * #{perPage})
+			</if>
+	</select>
+	
+	<select id="brandy" resultMap="productMap">
+		SELECT * FROM 
+			(SELECT sub.*, ROWNUM rnum FROM
+			(SELECT * FROM product JOIN category on (product.category_id = category.id) join photo on (product.id = photo.product_id)) sub)
+			
+			<if test="perPage == 0">
+			 WHERE category_id BETWEEN 3 and 5
+			</if>
+			<if test="perPage != 0">
+				WHERE rnum BETWEEN ((#{page} - 1) * #{perPage}) + 1 AND (#{page} * #{perPage})
+			</if>
+	</select>
+	
+	<select id="liquor" resultMap="productMap">
+		SELECT * FROM 
+			(SELECT sub.*, ROWNUM rnum FROM
+			(SELECT * FROM product JOIN category on (product.category_id = category.id) join photo on (product.id = photo.product_id)) sub)
+			
+			<if test="perPage == 0">
+			 WHERE category_id BETWEEN 6 and 7
+			</if>
+			<if test="perPage != 0">
+				WHERE rnum BETWEEN ((#{page} - 1) * #{perPage}) + 1 AND (#{page} * #{perPage})
+			</if>
+	</select>
+	
+	<select id="gin" resultMap="productMap">
+		SELECT * FROM 
+			(SELECT sub.*, ROWNUM rnum FROM
+			(SELECT * FROM product JOIN category on (product.category_id = category.id) join photo on (product.id = photo.product_id)) sub)
+			
+			<if test="perPage == 0">
+			 WHERE category_id BETWEEN 9 and 11
+			</if>
+			<if test="perPage != 0">
+				WHERE rnum BETWEEN ((#{page} - 1) * #{perPage}) + 1 AND (#{page} * #{perPage})
+			</if>
+	</select>
+	
 </mapper>

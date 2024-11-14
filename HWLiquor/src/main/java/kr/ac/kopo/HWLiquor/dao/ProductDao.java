@@ -28,6 +28,21 @@ public interface ProductDao {
 
 	void deletePhoto(Long id);
 
+	//인덱스 페이지	
+	List<Product> wine(Pager pager);
+
+	List<Product> whiskey(Pager pager);
+
+	List<Product> brandy(Pager pager);
+
+	List<Product> liquor(Pager pager);
+
+	List<Product> gin(Pager pager);
+
+	//카테고리 상세 페이지	
+
+	List<Product> wineList(Pager pager);
+
 
 
 }
