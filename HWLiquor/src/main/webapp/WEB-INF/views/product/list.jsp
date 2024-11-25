@@ -41,7 +41,7 @@
 				
 				<c:forEach var="item" items="${list}">
 					<tr>
-						<td>${item.name}</td>
+						<td><a href="view/${item.id}">${item.name}</a></td>
 						<td>${item.nameEng}</td>
 						<td>${item.originName}</td>
 						<td>${item.price}원</td>
@@ -77,7 +77,7 @@
             <span><button class="p_rev"><a href="?page=${pager.prev}${pager.query}"><img src="${pageContext.request.contextPath}/resources/images/rev-gray.png" alt="뒤로가기"></a></button></span>
             
             <c:forEach var="page" items="${pager.list}">
-            <span><button class="p_btn" onclick="location.href = ?page='${page}${pager.query}'">1</button></span>
+            <span><button class="p_btn" onclick="location.href = ?page='${page}${pager.query}'">${page}</button></span>
             </c:forEach>
            
             <span><button class="p_next"><a href="?page=${pager.next}${pager.query}"><img src="${pageContext.request.contextPath}/resources/images/next-gray.png" alt="다음"></a></button></span>

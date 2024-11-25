@@ -43,6 +43,17 @@ public interface ProductDao {
 
 	List<Product> wineList(Pager pager);
 
+	List<Product> whiskeyList(Pager pager);
+
+	List<Product> brandyList(Pager pager);
+
+	List<Product> vodkaList(Pager pager);
+
+	List<Product> ginList(Pager pager);
+
+	List<Product> search(Pager pager);
+
+
 
 
 }

@@ -31,7 +31,10 @@
 	
 	<interceptors>
 		<interceptor>
-		<mapping path="/member/**"/>	
+		<mapping path="/member/**"/>
+		<mapping path="/product/**"/>
+		
+		<exclude-mapping path="/product/item/**"/>	
 		<beans:bean class="kr.ac.kopo.HWLiquor.interceptor.AdminInterceptor"></beans:bean>
 		</interceptor>
 	</interceptors>

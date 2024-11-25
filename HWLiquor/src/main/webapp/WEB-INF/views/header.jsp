@@ -23,17 +23,17 @@
             </div>
             <nav>
                 <ul class="nav-bar" style="font-family: 'Noto Sans', sans-serif; font-weight: 570;">
-                    <li><a href="/goods/wine/0">와인</a></li>
+                    <li><a href="/goods/wine">와인</a></li>
                     <li><a href="/goods/whisky">위스키</a></li>
                     <li><a href="/goods/brandy">브랜디/코냑</a></li>
-                    <li><a href="/goods/vodka">리큐르/보드카</a></li>
+                    <li><a href="/goods/vodka">보드카/리큐르</a></li>
                     <li><a href="/goods/gin">진/럼</a></li>
                     <li><a href="/community">커뮤니티</a></li>
                 </ul>
             </nav>
 
             <div class="btn-all">
-                    <form>
+                    <form action="${pageContext.request.contextPath}/search">
                 		<div class="search-bar">
                     		<input type="text" name="keyword" id="keyword">
                         	<button class="search-icon">

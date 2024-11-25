@@ -33,7 +33,8 @@ public class RootController {
 	}
 	
 	@GetMapping("/")
-	String index(Model model) {
+	String index(Model model, Pager pager) {
+		
 		List<Product> wine = productService.wine(new Pager());
 		model.addAttribute("wine", wine);
 		
@@ -105,5 +106,15 @@ public class RootController {
 	String admin() {
 		return "/admin/admin";
 	}
+	
+	@GetMapping("/search")
+	String search(Model model, Pager pager) {
+		List<Product> search = productService.search(pager);
+		
+		model.addAttribute("search", search);
+		
+		return "search";
+	}
+
 
 }

@@ -18,7 +18,7 @@
 		</div>
 		<div class="liquor">
 			<div class="main-cimg">
-				<img src="resources/images/cimg.png"> <a href="goods/wine/0"
+				<img src="resources/images/cimg.png"> <a href="goods/wine"
 					style="font-family: 'Noto Sans', sans-serif;">더보기 +</a>
 			</div>
 			<div class="wine-content">
@@ -26,14 +26,16 @@
 					<img src="resources/images/Rectangle 6.png">
 				</div>
 				<ul class="items">
-				<c:if test="${wine == null || wineList.size() < 1}">
+				<c:if test="${wine == null || wine.size() < 1}">
 					<li>등록 된 상품이 없습니다.</li>
 				</c:if>
 				
 				<c:forEach var="item" items="${wine}" end="9">
 				 <li class="goods-box">
                         <div class="photo-box"><img src="${pageContext.request.contextPath}/upload/${item.photo[0].uuid}_${item.photo[0].filename}" class="photo" /></div>
-                        <div class="info-box"><a href="product/item/${item.id}">${item.nameEng}<p><fmt:formatNumber value="${item.price}" pattern="#,###"></fmt:formatNumber>원</p></a></div>
+                        <div class="info-box"><a href="product/item/${item.id}">
+                        <div class="product-name">${item.nameEng}</div>
+                        <p class="product-price"><fmt:formatNumber value="${item.price}" pattern="#,###"></fmt:formatNumber>원</p></a></div>
                     </li>
 				</c:forEach>
 				</ul>
@@ -42,7 +44,7 @@
 
 		<div class="liquor">
 			<div class="main-cimg">
-				<img src="resources/images/cimg2.png"> <a href="goods/whiskey"
+				<img src="resources/images/cimg2.png"> <a href="goods/whisky"
 					style="font-family: 'Noto Sans', sans-serif;">더보기 +</a>
 			</div>
 			<div class="wine-content">

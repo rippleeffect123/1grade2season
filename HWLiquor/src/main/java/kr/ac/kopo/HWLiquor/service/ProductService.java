@@ -32,8 +32,20 @@ public interface ProductService {
 	void delete(Long id);
 
 	void deletePhoto(Long id);
-		//Category detail 부분
+		
+	//Category detail 부분
 	List<Product> wineList(Pager pager);
+
+	List<Product> whiskeyList(Pager pager);
+
+	List<Product> brandyList(Pager pager);
+
+	List<Product> vodkaList(Pager pager);
+
+	List<Product> ginList(Pager pager);
+
+	List<Product> search(Pager pager);
+
 
 
 

@@ -145,4 +145,20 @@ public class ProductController {
 		return id.toString();
 	}
 	
+	@GetMapping("/view/{id}")
+	String view(@PathVariable Long id, Model model) {
+		Product item = service.item(id);
+		
+		model.addAttribute("item", item);
+		
+		return path + "view";
+	}
+	
+	@GetMapping("/item/{id}")
+	String item(@PathVariable Long id, Model model) {
+		view(id, model);
+		
+		return path + "item";
+	}
+	
 }

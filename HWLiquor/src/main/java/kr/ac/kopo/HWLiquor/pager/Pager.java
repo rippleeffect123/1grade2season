@@ -10,15 +10,8 @@ public class Pager {
 	private float total;
 	private int perGroup = 5;
 	
-	private Long originId = 0L;
-	
-
-	public Long getOriginId() {
-		return originId;
-	}
-	public void setOriginId(Long originId) {
-		this.originId = originId;
-	}
+	private Long originId;
+	private Long categoryId;
 
 	
 	private String keyword;
@@ -92,7 +85,19 @@ public class Pager {
 		
 		return query;
 	}
+	public Long getOriginId() {
+		return originId;
+	}
+	public void setOriginId(Long originId) {
+		this.originId = originId;
+	}
 	
+	public Long getCategoryId() {
+		return categoryId;
+	}
+	public void setCategoryId(Long categoryId) {
+		this.categoryId = categoryId;
+	}
 	
 
 }

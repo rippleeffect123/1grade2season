@@ -124,11 +124,49 @@ public class ProductDaoImpl implements ProductDao {
 		return sql.selectList("product.gin", pager);
 	}
 
-
+	//카테고리 디테일 부분
 
 	@Override
 	public List<Product> wineList(Pager pager) {
-		return sql.selectList("product.wine", pager);
+		return sql.selectList("product.wine", pager);    
 	}
+
+
+
+	@Override
+	public List<Product> whiskeyList(Pager pager) {
+		return sql.selectList("product.whiskey", pager);
+	}
+
+
+
+	@Override
+	public List<Product> brandyList(Pager pager) {
+		return sql.selectList("product.brandy", pager);
+	}
+
+
+
+	@Override
+	public List<Product> vodkaList(Pager pager) {
+		return sql.selectList("product.liquor", pager);
+	}
+
+
+
+	@Override
+	public List<Product> ginList(Pager pager) {
+		return sql.selectList("product.gin", pager);
+	}
+
+
+
+	@Override
+	public List<Product> search(Pager pager) {
+		return sql.selectList("product.search-bar", pager);
+	}
+
+
+
 
 }

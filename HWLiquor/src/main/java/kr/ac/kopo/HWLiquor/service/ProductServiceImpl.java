@@ -144,4 +144,46 @@ public class ProductServiceImpl implements ProductService {
 		return dao.wineList(pager);
 	}
 
+	@Override
+	public List<Product> whiskeyList(Pager pager) {
+		int total = dao.total(pager);
+		
+		pager.setTotal(total);
+		return dao.whiskeyList(pager);
+	}
+
+	@Override
+	public List<Product> brandyList(Pager pager) {
+		int total = dao.total(pager);
+		
+		pager.setTotal(total);;
+		return dao.brandyList(pager);
+	}
+
+	@Override
+	public List<Product> vodkaList(Pager pager) {
+		int total = dao.total(pager);
+		
+		pager.setTotal(total);
+		return dao.vodkaList(pager);
+	}
+
+	@Override
+	public List<Product> ginList(Pager pager) {
+		int total = dao.total(pager);
+		
+		pager.setTotal(total);
+		return dao.ginList(pager);
+	}
+
+	@Override
+	public List<Product> search(Pager pager) {
+		int total = dao.total(pager);
+		
+		pager.setTotal(total);
+		return dao.search(pager);
+	}
+
+
+
 }
