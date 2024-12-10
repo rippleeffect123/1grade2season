@@ -6,17 +6,17 @@ const cart = (productId, amount) => {
         });
 };
 
-const buy = (productId, amount) => {
+const buy = (productId, amt) => {
 
 };
 window.postLogin = type => {
-    const amount = document.getElementById("amount").value;
+    const amount = document.getElementById("amt").value;
     const productId = document.querySelector(`.action[data-type='${type}']`).dataset.id;
 
     alert(`로그인 완료" : ${type}`)
 
-    fetch("/nav").then(resp => resp.text()).then(result => {
-        document.getElementById("nav").innerHTML = result;
+    fetch("/header").then(resp => resp.text()).then(result => {
+        document.getElementById("header").innerHTML = result;
     });
 
     if (type === "cart") {
@@ -30,9 +30,9 @@ window.addEventListener("load", () => {
     document.querySelectorAll(".action").forEach(item => {
         item.addEventListener("click", e => {
             const { id, login, type } = e.target.dataset;
-            const amount = document.getElementById("amount").value;
+            const amount = document.getElementById("amt").value;
 
-            alert(`${id} ${type} ${amount} - ${login === "true"}`);
+            alert(`상품 ${amount}개가 장바구니에 담겼습니다.`);
 
             if (login === "true") {
                 if (type === "cart") {

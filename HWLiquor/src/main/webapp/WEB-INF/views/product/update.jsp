@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>HWLiquor/제품 수정</title>
  <link rel="stylesheet" href="/resources/css/font.css">
     <link rel="stylesheet" href="/resources/css/update.css">
 <link rel="stylesheet" href="/resources/summernote-bs5.min.css">
@@ -37,6 +37,20 @@
                     </div>
                     <div class="input-value">
                         <input type="number" name="categoryId" value="${item.categoryId}">
+                    </div>
+                    
+                    <div>
+                        <p>국가 번호</p>
+                    </div>
+                    <div class="input-value">
+                        <input type="number" name="originId" value="${item.originId}">
+                    </div>
+                    
+                    <div>
+                        <p>생산 국가</p>
+                    </div>
+                    <div class="input-value">
+                        <input type="text" name="originName" value="${item.originName}">
                     </div>
                 
                     <div>

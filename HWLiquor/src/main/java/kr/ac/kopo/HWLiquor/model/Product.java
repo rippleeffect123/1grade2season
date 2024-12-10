@@ -91,6 +91,14 @@ public class Product {
 	public void setOriginName(String originName) {
 		this.originName = originName;
 	}
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", categoryId=" + categoryId + ", originId=" + originId + ", originName="
+				+ originName + ", name=" + name + ", nameEng=" + nameEng + ", price=" + price + ", brand=" + brand
+				+ ", vol=" + vol + ", abv=" + abv + ", info=" + info + ", photo=" + photo + "]";
+	}
+	
+	
 	
 	
 }

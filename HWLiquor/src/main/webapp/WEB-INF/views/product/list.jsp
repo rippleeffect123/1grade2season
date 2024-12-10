@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,6 +25,7 @@
 				<tr>
 					<th>제품명</th>
 					<th>제품영명</th>
+					<th>카테고리번호</th>
 					<th>생산지</th>
 					<th>가격</th>
 					<th>브랜드</th>
@@ -35,7 +37,7 @@
 			<tbody>
 				<c:if test="${list.size() < 1}">
 					<tr>
-						<td colspan="9">검색 된 제품이 없습니다</td>
+						<td colspan="10">검색 된 제품이 없습니다</td>
 					<tr>
 				</c:if>
 				
@@ -43,8 +45,9 @@
 					<tr>
 						<td><a href="view/${item.id}">${item.name}</a></td>
 						<td>${item.nameEng}</td>
+						<td>${item.categoryId}</td>
 						<td>${item.originName}</td>
-						<td>${item.price}원</td>
+						<td><fmt:formatNumber value="${item.price}" pattern="#,###"></fmt:formatNumber>원</td>
 						<td>${item.brand}</td>
 						<td>${item.vol}ml</td>
 						<td>${item.abv}%</td>
@@ -72,17 +75,7 @@
 			</div>
 		</div>
 		
-		<div class="page">
-            <span><button class="p_rev"><a href="?page=1${pager.query}"><img src="${pageContext.request.contextPath}/resources/images/doublerev-gray.png" alt="처음으로"></a></button></span>
-            <span><button class="p_rev"><a href="?page=${pager.prev}${pager.query}"><img src="${pageContext.request.contextPath}/resources/images/rev-gray.png" alt="뒤로가기"></a></button></span>
-            
-            <c:forEach var="page" items="${pager.list}">
-            <span><button class="p_btn" onclick="location.href = ?page='${page}${pager.query}'">${page}</button></span>
-            </c:forEach>
-           
-            <span><button class="p_next"><a href="?page=${pager.next}${pager.query}"><img src="${pageContext.request.contextPath}/resources/images/next-gray.png" alt="다음"></a></button></span>
-            <span><button class="p_next"><a href="?page=${pager.last}${pager.query}"><img src="${pageContext.request.contextPath}/resources/images/nextpage-gray.png" alt="마지막"></a></button></span>
-        	</div>
+		<jsp:include page="../pager.jsp"></jsp:include>
 	</div>
 	</div>
 

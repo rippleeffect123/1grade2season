@@ -10,29 +10,31 @@
   <link rel="stylesheet" href="/resources/css/view.css">
   <link rel="stylesheet" href="/resources/css/header.css">
   <script src="/resources/script/plusminus.js"></script>
+  <script src="/resources/js/product/item.js"></script>
 </head>
 <body>
-<div><jsp:include page="../header.jsp"></jsp:include></div>
+<div id="header"><jsp:include page="../header.jsp"></jsp:include></div>
 <div class="container">
         <div class="item_photo">
-        	<c:forEach var="photo" items="${item.photo}" >
+   
             <div class="photo_big">
-                <img src="${pageContext.request.contextPath}/upload/${photo.uuid}_${photo.filename}" alt="상품이미지">
+                <img src="${pageContext.request.contextPath}/upload/${item.photo[0].uuid}_${item.photo[0].filename}" alt="상품이미지메인">
+                <c:if test="${item.photo.size() > 1 }">
                 <div class="photo_small">
-                    <div class="sm-1"><img src="${pageContext.request.contextPath}/upload/${photo.uuid}_${photo.filename}" alt="상품이미지"></div>
-                    <div class="sm-2"><img src="${pageContext.request.contextPath}/upload/${photo.uuid}_${photo.filename}" alt="상품이미지"></div>
-                    <div class="sm-3"><img src="${pageContext.request.contextPath}/upload/${photo.uuid}_${photo.filename}" alt="상품이미지"></div>
+                    <div class="sm-1"><img src="${pageContext.request.contextPath}/upload/${item.photo[1].uuid}_${item.photo[1].filename}" alt="상품이미지1"></div>
+                    <div class="sm-2"><img src="${pageContext.request.contextPath}/upload/${item.photo[2].uuid}_${item.photo[2].filename}" alt="상품이미지2"></div>
+                    <div class="sm-3"><img src="${pageContext.request.contextPath}/upload/${item.photo[3].uuid}_${item.photo[3].filename}" alt="상품이미지3"></div>
                 </div>
+                </c:if>
             </div>
-        	</c:forEach>
-
+      
             <div class="details">
                 <h3>${item.name}</h3>
                 <div class="line"></div>
                 <div>
                     <div class="price">
                         <p class="p-1">판매가</p>
-                        <p class="p-2">${item.price}원</p>
+                        <p class="p-2"><fmt:formatNumber value="${item.price}" pattern="#,###"></fmt:formatNumber>원</p>
                     </div>
 
                     <div class="boon">
@@ -45,18 +47,19 @@
 
                     <div class="brand">
                         <p class="br-1">브랜드</p>
-                        <p class="br-2">잭다니엘(Jackdaniel's)</p>
+                        <p class="br-2">${item.brand}</p>
                     </div>
 
                     <div class="origin">
                         <p class="o-1">생산국가</p>
-                        <p class="o-2">미국</p>
+                        <p class="o-2">${item.originName}</p>
                     </div>
 
                     <div class="information">
-                        <p>상세 정보</p>
-                        <textarea name="info" id="info">
-                        </textarea>
+                        <p class="info-title">상세 정보</p>
+                        <div id="info">
+                   	     ${item.info}
+                        </div>
                     </div>
 
                     <div class="amount">
@@ -70,12 +73,20 @@
                         <p class="total-price">총 합계금액</p>
                         <span class="saleprice"></span>
                     </div>
-
+						
+					
+						
                     <div class="paybtn">
-                        <button class="cart-btn2"><img src="/resources/images/icons8-카트-48.png" alt="장바구니">
+                    	<c:if test="${sessionScope.member == null}">
+						      <a href=../../login class="none"><button class="none">로그인 후 구매하기</button></a>
+						</c:if>
+						
+						<c:if test="${sessionScope.member != null }">
+                        <button id="cart" data-type="cart" data-login="${sessionScope.member != null}" data-id="${item.id}"  class="action cart-btn2"><img src="/resources/images/icons8-카트-48.png" alt="장바구니">
                             <p>장바구니</p>
                         </button>
-                        <button class="pay">구매하기</button>
+                        <button id="buy" data-type="buy" data-login="${sessionScope.member != null}" data-id="${item.id}" class="action pay">구매하기</button>
+						</c:if>
                     </div>
                 </div>
             </div>

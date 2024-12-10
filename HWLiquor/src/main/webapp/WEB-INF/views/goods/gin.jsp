@@ -30,17 +30,7 @@
 			<div class="item-box" id="list">
        			<jsp:include page="ginlist.jsp"></jsp:include>
 			</div>
-        <div class="page">
-            <span><button class="p_rev"><a href="?page=1${pager.query}"><img src="/resources/images/doublerev-gray.png" alt="끝으로"></a></button></span>
-            <span><button class="p_rev"><a href="?page=${pager.prev}${pager.query}"><img src="/resources/images/rev-gray.png" alt="뒤로가기"></a></button></span>
-            
-            <c:forEach var="page" items="${pager.list}">
-            <span><button class="p_btn" onclick="location.href = ?page='${page}${pager.query}'">${page}</button></span>
-            </c:forEach>
-            
-            <span><button class="p_next"><a href="?page=${pager.next}${pager.query}"><img src="/resources/images/next-gray.png" alt="다음"></a></button></span>
-            <span><button class="p_next"><a href="?page=${pager.last}${pager.query}"><img src="/resources/images/nextpage-gray.png" alt="마지막"></a></button></span>
-        </div>
+        <jsp:include page="../pager.jsp"></jsp:include>
     </div>
 </body>
 </html>

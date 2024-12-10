@@ -1,10 +1,13 @@
 package kr.ac.kopo.HWLiquor.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 
 import kr.ac.kopo.HWLiquor.dao.ProductDao;
 import kr.ac.kopo.HWLiquor.model.Photo;
@@ -182,6 +185,20 @@ public class ProductServiceImpl implements ProductService {
 		
 		pager.setTotal(total);
 		return dao.search(pager);
+	}
+
+	@Override
+	public List<Product> list(Set<Long> keySet) {
+		if(keySet.isEmpty())
+			return new ArrayList<Product>();
+		
+		return dao.list(keySet);
+	}
+
+	@Override
+	public Product cartPhoto(Long id) {
+
+		return dao.item(id);
 	}
 
 

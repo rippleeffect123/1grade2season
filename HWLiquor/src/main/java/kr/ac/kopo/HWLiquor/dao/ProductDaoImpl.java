@@ -1,6 +1,8 @@
 package kr.ac.kopo.HWLiquor.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -164,6 +166,17 @@ public class ProductDaoImpl implements ProductDao {
 	@Override
 	public List<Product> search(Pager pager) {
 		return sql.selectList("product.search-bar", pager);
+	}
+
+
+
+	@Override
+	public List<Product> list(Set<Long> keySet) {
+		HashMap<String, Set<Long>> map = new HashMap<String, Set<Long>>();
+		
+		map.putIfAbsent("keySet", keySet);
+		
+		return sql.selectList("product.list_keyset", map);
 	}
 
 

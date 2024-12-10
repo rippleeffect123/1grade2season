@@ -18,11 +18,11 @@ public class UserInterceptor extends HandlerInterceptorAdapter {
 		Member member = (Member) session.getAttribute("member");
 		
 		
-		if(member == null)
-			response.sendRedirect("/login");
-		else
-			response.sendRedirect("/");
+		if(member != null)
+			return true;
 		
+		response.sendRedirect("/login");
+
 		return false;
 	}
 }

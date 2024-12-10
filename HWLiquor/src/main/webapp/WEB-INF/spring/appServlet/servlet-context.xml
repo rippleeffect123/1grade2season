@@ -31,6 +31,13 @@
 	
 	<interceptors>
 		<interceptor>
+			<mapping path="/cart/**"/>
+			<mapping path="/orders/**"/>
+			
+			<beans:bean class="kr.ac.kopo.HWLiquor.interceptor.UserInterceptor"></beans:bean>
+		</interceptor>
+	
+		<interceptor>
 		<mapping path="/member/**"/>
 		<mapping path="/product/**"/>
 		

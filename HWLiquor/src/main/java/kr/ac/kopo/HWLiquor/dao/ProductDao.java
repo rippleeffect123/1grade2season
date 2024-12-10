@@ -1,6 +1,7 @@
 package kr.ac.kopo.HWLiquor.dao;
 
 import java.util.List;
+import java.util.Set;
 
 import kr.ac.kopo.HWLiquor.model.Photo;
 import kr.ac.kopo.HWLiquor.model.Product;
@@ -50,8 +51,12 @@ public interface ProductDao {
 	List<Product> vodkaList(Pager pager);
 
 	List<Product> ginList(Pager pager);
+	
+	//
 
 	List<Product> search(Pager pager);
+
+	List<Product> list(Set<Long> keySet);
 
 
 

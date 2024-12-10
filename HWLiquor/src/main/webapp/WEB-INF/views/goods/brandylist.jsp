@@ -15,7 +15,7 @@
 	<c:forEach items="${brandyList}" var="item">
 		<div class="items-box">
 			<div class="photo-box"><img src="${pageContext.request.contextPath}/upload/${item.photo[0].uuid}_${item.photo[0].filename}" class="photo" /></div>
-                        <div class="info-box"><a href="product/item/${item.id}">
+                        <div class="info-box"><a href="${pageContext.request.contextPath}/product/item/${item.id}">
                         <div class="product-name">${item.nameEng}</div>
                         <p class="product-price"><fmt:formatNumber value="${item.price}" pattern="#,###"></fmt:formatNumber>원</p></a></div>
 		</div>

@@ -114,7 +114,7 @@ public class GoodsController {
 	@GetMapping("/gin/{categoryId}")
 	String gin(@PathVariable Long categoryId,Model model, Pager pager) {
 		pager.setCategoryId(categoryId);
-		List<Product> ginList = service.vodkaList(pager);
+		List<Product> ginList = service.ginList(pager);
 		
 		model.addAttribute("ginList", ginList);
 		

@@ -7,23 +7,22 @@
 <head>
 <meta charset="UTF-8">
 <title>HWLiquor/메인페이지</title>
-<link rel="stylesheet" href="resources/css/main.css">
+<link rel="stylesheet" href="/resources/css/main.css">
 </head>
 <body>
-
 	<div>
 		<jsp:include page="header.jsp"></jsp:include>
 		<div class="main-img">
-			<img src="resources/images/main-img.png">
+			<img src="/resources/images/main-img.png">
 		</div>
 		<div class="liquor">
 			<div class="main-cimg">
-				<img src="resources/images/cimg.png"> <a href="goods/wine"
+				<img src="/resources/images/cimg.png"> <a href="goods/wine"
 					style="font-family: 'Noto Sans', sans-serif;">더보기 +</a>
 			</div>
 			<div class="wine-content">
 				<div class="category-img">
-					<img src="resources/images/Rectangle 6.png">
+					<img src="/resources/images/Rectangle 6.png">
 				</div>
 				<ul class="items">
 				<c:if test="${wine == null || wine.size() < 1}">

@@ -11,10 +11,13 @@
 		<typeAlias type="kr.ac.kopo.HWLiquor.model.Member" alias="Member"/>
 		<typeAlias type="kr.ac.kopo.HWLiquor.model.Photo" alias="Photo"/>
 		<typeAlias type="kr.ac.kopo.HWLiquor.model.Category" alias="Category"/>
+		<typeAlias type="kr.ac.kopo.HWLiquor.model.Orders" alias="Orders"/>
+		<typeAlias type="kr.ac.kopo.HWLiquor.model.OrdersDetail" alias="OrdersDetail"/>
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="mapper/product.xml"/>
 		<mapper resource="mapper/member.xml"/>
+		<mapper resource="mapper/orders.xml"/>
 	</mappers>
 </configuration>

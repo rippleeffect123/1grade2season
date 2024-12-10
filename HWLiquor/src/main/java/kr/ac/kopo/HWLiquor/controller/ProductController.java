@@ -89,6 +89,8 @@ public class ProductController {
 	String update(@PathVariable Long id, Product item, List<MultipartFile> uploadFile) {
 		List<Photo> photos = new ArrayList<Photo>();
 		
+		System.out.println(item);
+		
 		for(MultipartFile file : uploadFile) {
 			if(file != null && !file.isEmpty()) {
 				String filename = file.getOriginalFilename();

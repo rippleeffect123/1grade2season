@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/font.css">
+<link rel="stylesheet" href="/resources/css/header.css">
+    <link rel="stylesheet" href="/resources/css/font.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
     </style>
@@ -18,7 +18,7 @@
 <div class="header">
             <div class="logo-main">
                 <a href="${pageContext.request.contextPath}/">
-                    <img src="${pageContext.request.contextPath}/resources/images/HW.png">
+                    <img src="/resources/images/HW.png">
                 </a>
             </div>
             <nav>

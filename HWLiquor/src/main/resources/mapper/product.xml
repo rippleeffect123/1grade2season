@@ -4,7 +4,9 @@
 <mapper namespace="product">
 
 	<sql id="search">
-		SELECT * FROM product JOIN category on (product.category_id = category.id)
+		SELECT product.*, category.name AS category_name 
+        FROM product
+        JOIN category ON product.category_id = category.id
 		<if test="keyword != null">
 		<where>
 			product.name LIKE CONCAT(CONCAT('%', #{keyword}), '%') OR 
@@ -13,21 +15,27 @@
 		</where>
 		</if>
 		
-		ORDER BY product.id
 	</sql>
 
 	<select id="total" resultType="Integer">
 		SELECT COUNT(*) FROM (<include refid="search"></include>)
 	</select>
 
-	<select id="list" resultType="Product">
-		SELECT * FROM 
-			(SELECT sub.*, ROWNUM rnum FROM
-			(<include refid="search"></include>) sub)
-			
+	<select id="list" resultMap="productMap">
+	  SELECT product.*, 
+           photo.id AS photo_id, 
+           photo.filename, 
+           photo.uuid, 
+           photo.product_id 
+  			FROM 
+    (SELECT * FROM 
+      (SELECT sub.*, ROWNUM AS rnum FROM 
+        (<include refid="search"></include>) sub
+      ) product
 			<if test="perPage != 0">
-				WHERE rnum BETWEEN ((#{page} - 1) * #{perPage}) + 1 AND (#{page} * #{perPage})
-			</if>
+				where rnum BETWEEN ((#{page} - 1) * #{perPage}) + 1 AND (#{page} * #{perPage})
+			</if>) product
+			LEFT JOIN photo ON product.id=photo.product_id ORDER BY product.id
 	</select>
 	
 	<insert id="add">
@@ -51,7 +59,7 @@
 		</collection>
 	</resultMap>
 	
-	<resultMap type="Category" id="categoryMap" autoMapping="true">
+	 <resultMap type="Category" id="categoryMap" autoMapping="true">
     <id column="id" property="id" />
     
     <!-- Product 컬렉션 매핑 -->
@@ -59,11 +67,22 @@
         <id column="product_id" property="id"/>
     </collection>
 
-    <!-- Photo 컬렉션 매핑 -->
+   <!--  Photo 컬렉션 매핑 -->
     <collection column="product_id" property="photo" ofType="Photo" javaType="ArrayList" autoMapping="true">
         <id column="photo_id" property="id"/>
     </collection>
-</resultMap>
+</resultMap> 
+
+	<select id="list_keyset" resultType="Product">
+		SELECT * FROM product
+		
+		<where>
+			id IN 
+			<foreach collection="keySet" item="key" open="(" close=")" separator=",">
+				#{key}
+			</foreach>
+		</where>
+	</select>
 	
 	<select id="item" resultMap="productMap"> 
 		SELECT product.*,
@@ -79,7 +98,7 @@
 	<!-- 카테고리와 나라를 받아오는 쿼리문 -->
 	<select id="item_origin" resultMap="categoryMap">
 		SELECT product.id,
-		product.category_id,product.orgin_id, product.origin_name,product.name,
+		product.category_id,product.origin_id, product.origin_name,product.name,
 		product.name_eng,product.price,
 		product.brand, product.vol, product.abv, product.info, category.id category_id, 
 		category.name category_name,photo.id photo_id, photo.filename, 
@@ -95,7 +114,7 @@
 	
 	<update id="update">
 		UPDATE product
-		SET category_id=#{categoryId},origin_id=#{originId},origin_name=#{originName}, name=#{name} name_eng=#{nameEng}, price=#{price}, brand=#{brand}, vol=#{vol}, abv=#{abv}, info=#{info}
+		SET category_id=#{categoryId},origin_id=#{originId},origin_name=#{originName}, name=#{name}, name_eng=#{nameEng}, price=#{price}, brand=#{brand}, vol=#{vol}, abv=#{abv}, info=#{info}
 		WHERE id=#{id} 
 	</update>
 	
@@ -126,77 +145,117 @@
 	</delete>
 	
 	<select id="wine" resultMap="productMap">
-		SELECT * FROM 
-			(SELECT sub.*, ROWNUM rnum FROM
-			(SELECT * FROM product JOIN category on (product.category_id = category.id) join photo on (product.id = photo.product_id)) sub)
-			WHERE category_id = 1
+		SELECT product.*, 
+           photo.id AS photo_id, 
+           photo.filename, 
+           photo.uuid, 
+           photo.product_id 
+  		FROM 
+      (SELECT * FROM 
+      (SELECT sub.*, ROWNUM AS rnum FROM
+      (<include refid="search"></include>) sub) product
 			<if test="perPage != 0">
-				and rnum BETWEEN ((#{page} - 1) * #{perPage}) + 1 AND (#{page} * #{perPage})
-			</if>
+				WHERE rnum BETWEEN ((#{page} - 1) * #{perPage}) + 1 AND (#{page} * #{perPage})
+			</if>) product
+			  LEFT JOIN photo ON product.id=photo.product_id
+			  WHERE category_id = 1
 			<if test="originId != null and originId != 0">
 				and category_id = 1 and origin_id = #{originId}
 			</if>
-			
+			ORDER BY product.id
 	</select>
 	
 	<select id="whiskey" resultMap="productMap">
-		SELECT * FROM 
-			(SELECT sub.*, ROWNUM rnum FROM
-			(SELECT * FROM product JOIN category on (product.category_id = category.id) join photo on (product.id = photo.product_id)) sub)
-			WHERE category_id = 2
+		SELECT product.*, 
+           photo.id AS photo_id, 
+           photo.filename, 
+           photo.uuid, 
+           photo.product_id 
+  		FROM 
+      (SELECT * FROM 
+      (SELECT sub.*, ROWNUM AS rnum FROM
+      (<include refid="search"></include>
+      WHERE category_id = 2) sub) product
 			<if test="perPage != 0">
-				and rnum BETWEEN ((#{page} - 1) * #{perPage}) + 1 AND (#{page} * #{perPage})
-			</if>
+				WHERE rnum BETWEEN ((#{page} - 1) * #{perPage}) + 1 AND (#{page} * #{perPage})
+			</if>) product
+			  LEFT JOIN photo ON product.id=photo.product_id
 			<if test="originId != null and originId != 0">
-				and category_id = 2 and origin_id = #{originId}
+				WHERE origin_id = #{originId}
 			</if>
+			ORDER BY product.id
 	</select>
 	
 	<select id="brandy" resultMap="productMap">
-		SELECT * FROM 
-			(SELECT sub.*, ROWNUM rnum FROM
-			(SELECT * FROM product 
-			JOIN category on product.category_id=category.id 
-			join photo on product.id=photo.product_id) sub)
-			WHERE category_id BETWEEN 3 and 5
+		SELECT product.*, 
+           photo.id AS photo_id, 
+           photo.filename, 
+           photo.uuid, 
+           photo.product_id 
+  		FROM 
+      (SELECT * FROM 
+      (SELECT sub.*, ROWNUM AS rnum FROM
+      (<include refid="search"></include>
+      WHERE category_id BETWEEN 3 and 5) sub) product
 			<if test="perPage != 0">
-				and rnum BETWEEN ((#{page} - 1) * #{perPage}) + 1 AND (#{page} * #{perPage})
-			</if>
+				WHERE rnum BETWEEN ((#{page} - 1) * #{perPage}) + 1 AND (#{page} * #{perPage})
+			</if>) product
+			  LEFT JOIN photo ON product.id=photo.product_id
+			  
 			<if test="categoryId != null and categoryId != 0">
-				and category_id = #{categoryId}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+				WHERE category_id = #{categoryId}
 			</if>
+			ORDER BY product.id
 	</select>
 	
 	<select id="liquor" resultMap="productMap">
-		SELECT * FROM 
-			(SELECT sub.*, ROWNUM rnum FROM
-			(SELECT * FROM product JOIN category on (product.category_id = category.id) join photo on (product.id = photo.product_id)) sub)
-			 WHERE category_id BETWEEN 6 and 7
+		SELECT product.*, 
+           photo.id AS photo_id, 
+           photo.filename, 
+           photo.uuid, 
+           photo.product_id 
+  		FROM 
+      (SELECT * FROM 
+      (SELECT sub.*, ROWNUM AS rnum FROM
+      (<include refid="search"></include>
+      WHERE category_id BETWEEN 6 and 8) sub) product
 			<if test="perPage != 0">
-				and rnum BETWEEN ((#{page} - 1) * #{perPage}) + 1 AND (#{page} * #{perPage})
-			</if>
+				WHERE rnum BETWEEN ((#{page} - 1) * #{perPage}) + 1 AND (#{page} * #{perPage})
+			</if>) product
+			  LEFT JOIN photo ON product.id=photo.product_id
+			  
 			<if test="categoryId != null and categoryId != 0">
-				and category_id = #{categoryId}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+				WHERE category_id = #{categoryId}
 			</if>
+			ORDER BY product.id
 	</select>
 	
 	<select id="gin" resultMap="productMap">
-		SELECT * FROM 
-			(SELECT sub.*, ROWNUM rnum FROM
-			(SELECT * FROM product JOIN category on (product.category_id = category.id) join photo on (product.id = photo.product_id)) sub)
-			 WHERE category_id BETWEEN 9 and 11
-			<if test="categoryId != null and categoryId != 0">
-				and category_id = #{categoryId}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
-			</if>
+		SELECT product.*, 
+           photo.id AS photo_id, 
+           photo.filename, 
+           photo.uuid, 
+           photo.product_id 
+  		FROM 
+      (SELECT * FROM 
+      (SELECT sub.*, ROWNUM AS rnum FROM
+      (<include refid="search"></include>
+      WHERE category_id BETWEEN 9 and 12) sub) product
 			<if test="perPage != 0">
-				and rnum BETWEEN ((#{page} - 1) * #{perPage}) + 1 AND (#{page} * #{perPage})
+				WHERE rnum BETWEEN ((#{page} - 1) * #{perPage}) + 1 AND (#{page} * #{perPage})
+			</if>) product
+			  LEFT JOIN photo ON product.id=photo.product_id
+			  
+			<if test="categoryId != null and categoryId != 0">
+				WHERE category_id = #{categoryId}
 			</if>
+			ORDER BY product.id
 	</select>
 	
 	<select id="search-bar" resultMap="productMap">
 		SELECT * FROM product JOIN category on (product.category_id = category.id) JOIN photo on (photo.product_id = product.id)
       where
-      product.name LIKE CONCAT(CONCAT(#{keyword}, '잭 다니엘'), '%') OR 
+      product.name LIKE CONCAT(CONCAT('%', #{keyword}), '%') OR 
 	brand LIKE CONCAT(CONCAT('%', #{keyword}), '%') OR
 	category.name LIKE CONCAT(CONCAT('%', #{keyword}), '%')
 	</select>

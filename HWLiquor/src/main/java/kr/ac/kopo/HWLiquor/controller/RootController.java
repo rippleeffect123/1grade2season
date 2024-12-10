@@ -95,6 +95,24 @@ public class RootController {
 		}
 	}
 	
+	@GetMapping("/login/{type}/popup")
+	String loginPopup(@PathVariable String type) {
+		return "login_popup";
+	}
+	
+	@PostMapping("/login/{type}/popup")
+	String loginPopup(@PathVariable String type, Member item, HttpSession session) {
+		if(service.login(item)) {
+			System.out.println("팝업 성공");
+			session.setAttribute("member", item);
+			
+			return "login_popup";
+		} else {
+			System.out.println("팝업 실패");
+			return "redirect:popup";
+		}
+	}
+	
 	@GetMapping("/logout")
 	String logut(HttpSession session) {
 		session.invalidate();
@@ -105,6 +123,12 @@ public class RootController {
 	@GetMapping("/admin")
 	String admin() {
 		return "/admin/admin";
+	}
+	
+	@GetMapping("/mypage")
+	String mypage(Member item, HttpSession session) {
+		session.setAttribute("member", item);
+		return "/user/mypage";
 	}
 	
 	@GetMapping("/search")

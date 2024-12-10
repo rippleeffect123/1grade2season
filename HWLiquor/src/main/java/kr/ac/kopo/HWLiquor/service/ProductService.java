@@ -1,6 +1,7 @@
 package kr.ac.kopo.HWLiquor.service;
 
 import java.util.List;
+import java.util.Set;
 
 import kr.ac.kopo.HWLiquor.model.Photo;
 import kr.ac.kopo.HWLiquor.model.Product;
@@ -45,6 +46,10 @@ public interface ProductService {
 	List<Product> ginList(Pager pager);
 
 	List<Product> search(Pager pager);
+
+	List<Product> list(Set<Long> keySet);
+
+	Product cartPhoto(Long id);
 
 
 
